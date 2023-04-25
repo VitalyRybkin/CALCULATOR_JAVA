@@ -1,53 +1,77 @@
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Calculations {
 
-    private int calculationResult;
+    ComplexNumber currentComplexNumber;
 
-    public Calculations(int calculationResult) {
-        this.calculationResult = calculationResult;
+    Validate validate = new Validate();
+
+    private final String logFileType = "txt";
+
+    public Calculations(ComplexNumber currentComplexNumber) {
+        this.currentComplexNumber = currentComplexNumber;
     }
 
-    public void calculationsRun() throws FileNotFoundException {
-        int arg = argInput();
-        this.calculationResult = arg;
-        logResult("Промежуточный результат", this.calculationResult);
+    public void calculationsRun() throws IOException {
+        ComplexNumber complexNumber = numInput();
+        this.currentComplexNumber.r = complexNumber.r;
+        this.currentComplexNumber.i = complexNumber.i;
+        usersInput(complexNumber);
+        logResult("Результат", this.currentComplexNumber, logFileType);
         while (true){
             String operation = operationInput();
             if (operation.equals("+")){
-                arg = argInput();
-                ICalculateFactory calculateFactory = new SumCalculateFactory();
-                ICalculate calculate = calculateFactory.createCalculation();
-                Ilog ilog = new LogTxt(calculate);
-                ilog.logString(arg, this.calculationResult, operation);
-                this.calculationResult = calculate.calculations(arg, this.calculationResult);
+                complexNumber = numInput();
+                usersInput(complexNumber);
+                ICalculate calculate = setCalculation(operation);
+                Ilog ilog = setLogFile(calculate, logFileType);
+                ilog.logString(complexNumber, this.currentComplexNumber, operation);
+                this.currentComplexNumber = calculate.calculations(complexNumber, this.currentComplexNumber);
                 continue;
             }
             if (operation.equals("*")){
-                arg = argInput();
-                ICalculateFactory calculateFactory = new MultCalculateFactory();
-                ICalculate calculate = calculateFactory.createCalculation();
-                Ilog ilog = new LogTxt(calculate);
-                ilog.logString(arg, this.calculationResult, operation);
-                this.calculationResult = calculate.calculations(arg, this.calculationResult);
+                complexNumber = numInput();
+                usersInput(complexNumber);
+                ICalculate calculate = setCalculation(operation);
+                Ilog ilog = setLogFile(calculate, logFileType);
+                ilog.logString(complexNumber, this.currentComplexNumber, operation);
+                this.currentComplexNumber = calculate.calculations(complexNumber, this.currentComplexNumber);
                 continue;
             }
             if (operation.equals("=")){
-                logResult("Результат расчета", this.calculationResult);
+                logResult("Результат", this.currentComplexNumber, logFileType);
                 break;
             }
         }
 
-        System.out.print("Результат: " + this.calculationResult);
+        String operand = getOperand(this.currentComplexNumber);
+        System.out.printf("Результат расчета: %.2f%s%.2fi", this.currentComplexNumber.r, operand, this.currentComplexNumber.i);
     }
 
-    public int argInput(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите аргумент: ");
-        return scanner.nextInt();
+    public ICalculate setCalculation(String operation) {
+        ICalculate calculate;
+        ICalculateFactory calculateFactory;
+        if (operation.equals("+")) {
+            calculateFactory = new SumCalculateFactory();
+        }
+        else {
+            calculateFactory = new MultCalculateFactory();
+        }
+        calculate = calculateFactory.createCalculation();
+        return calculate;
+    }
+
+    public Ilog setLogFile (ICalculate calculate, String logFileType) {
+        Ilog ilog;
+        if (logFileType.equals("txt")) {
+            ilog = new LogTxt(calculate);
+        }
+        else {
+            ilog = new LogCsv(calculate);
+        }
+        return ilog;
     }
 
     public String operationInput(){
@@ -56,13 +80,59 @@ public class Calculations {
         return scanner.next();
     }
 
-    public void logResult(String resultString, int currentResult){
-        try (FileWriter writer = new FileWriter("log.txt", true)) {
-            writer.write(String.format("%s: %d", resultString, currentResult));
-            writer.append('\n');
-            writer.flush();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+    public ComplexNumber numInput(){
+        Scanner scanner = new Scanner(System.in);
+        double r;
+        double i;
+        System.out.print("Введите действительную часть числа: ");
+        String input = scanner.next();
+        r = validate.ValidateInput(input);
+        System.out.print("Введите мнимую часть числа: ");
+        input = scanner.next();
+        i = validate.ValidateInput(input);
+        return new ComplexNumber(r, i);
+    }
+
+    public void usersInput (ComplexNumber complexNumber){
+        String operand = getOperand(complexNumber);
+        System.out.println("Вы ввели: " + complexNumber.r + operand + complexNumber.i + "i");
+    }
+
+    public void logResult(String resultString, ComplexNumber currentResult, String logFileType){
+        String operand = getOperand(currentResult);
+        if (logFileType.equals("txt")) {
+            try (FileWriter writer = new FileWriter("log.txt", true)) {
+
+                writer.write(String.format("%s: %.2f%s%.2fi, пользователь ввел, null\n",
+                        resultString, currentResult.r, operand, currentResult.i));
+
+                writer.flush();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
+
+        if (logFileType.equals("csv")) {
+            try {
+                FileWriter csvWriter = new FileWriter("LogCsv.csv", true);
+
+                csvWriter.write(String.format("%s, %.2f%s%.2fi, пользователь ввел, null\n",
+                        resultString, currentResult.r, operand, currentResult.i));
+
+                csvWriter.flush();
+                csvWriter.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public String getOperand(ComplexNumber complexNumber) {
+        String operand;
+        if (complexNumber.i >= 0.0) {
+            operand = "+";
+        }
+        else operand ="";
+        return operand;
     }
 }

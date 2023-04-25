@@ -1,6 +1,8 @@
 public class MultCalculate implements ICalculate {
     @Override
-    public int calculations(int arg, int currentResult) {
-        return arg * currentResult;
+    public ComplexNumber calculations(ComplexNumber arg, ComplexNumber currentResult) {
+        currentResult.i *= arg.i;
+        currentResult.r *= arg.r;
+        return currentResult;
     }
 }

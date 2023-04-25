@@ -1,4 +1,4 @@
 public interface ICalculate {
 
-    int calculations(int arg, int currentResult);
+    ComplexNumber calculations(ComplexNumber arg, ComplexNumber currentResult);
 }

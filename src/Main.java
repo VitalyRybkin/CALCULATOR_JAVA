@@ -1,10 +1,11 @@
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
 
-        Calculations calculationsRun = new Calculations(0);
+        ComplexNumber currentComplexNumber = new ComplexNumber(0.0, 0.0);
+        Calculations calculations = new Calculations(currentComplexNumber);
 
-        calculationsRun.calculationsRun();
+        calculations.calculationsRun();
     }
 }

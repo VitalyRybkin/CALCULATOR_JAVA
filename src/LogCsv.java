@@ -1,11 +1,11 @@
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class LogTxt implements Ilog {
+public class LogCsv implements Ilog{
 
     ICalculate calculate;
 
-    public LogTxt(ICalculate calculate) {
+    public LogCsv(ICalculate calculate) {
         this.calculate = calculate;
     }
 
@@ -21,14 +21,16 @@ public class LogTxt implements Ilog {
             operandArg = "+";
         } else operandArg = "";
 
-        String logString = String.format("Результат: %.2f%s%.2fi, пользователь ввел: %s %.2f%s%.2fi\n",
+        String logString = String.format("Результат, %.2f%s%.2fi, пользователь ввел, %s %.2f%s%.2fi,\n",
                 currentResult.r, operandCurrentResult, currentResult.i, operation, arg.r, operandArg, arg.i);
-        try (FileWriter writer = new FileWriter("log.txt", true)) {
-            writer.write(logString);
-            writer.flush();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
 
+        try {
+            FileWriter csvWriter = new FileWriter("LogCsv.csv",true);
+            csvWriter.write(logString);
+            csvWriter.flush();
+            csvWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

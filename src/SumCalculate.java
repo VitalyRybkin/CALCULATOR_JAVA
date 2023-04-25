@@ -1,6 +1,8 @@
 public class SumCalculate implements ICalculate {
     @Override
-    public int calculations(int arg, int currentResult) {
-        return currentResult + arg;
+    public ComplexNumber calculations(ComplexNumber arg, ComplexNumber currentResult) {
+        currentResult.i += arg.i;
+        currentResult.r += arg.r;
+        return currentResult;
     }
 }

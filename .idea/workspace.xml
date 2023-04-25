@@ -4,26 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7613c194-09f6-4f6a-b1a1-d9e7a87e1400" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CALCULATOR.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Calculations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ICalculate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ICalculateFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Ilog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LogTxt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MultCalculate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MultCalculateFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SumCalculate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SumCalculateFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/log.txt" afterDir="false" />
+    <list default="true" id="7613c194-09f6-4f6a-b1a1-d9e7a87e1400" name="Changes" comment="done">
+      <change afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LogCsv.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ComplexNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LogCsv.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Validate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Calculations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ICalculate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ICalculate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ilog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ilog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LogTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LogTxt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MultCalculate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultCalculate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SumCalculate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SumCalculate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/log.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -55,7 +51,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "Csv.Editor.Settings"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -67,9 +64,40 @@
       <option name="presentableId" value="Default" />
       <updated>1682191514011</updated>
     </task>
+    <task id="LOCAL-00001" summary="done">
+      <created>1682336114226</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682336114226</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="done" />
+    <option name="LAST_COMMIT_MESSAGE" value="done" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint type="java-exception">
+          <properties class="java.util.InputMismatchException" package="java.util" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,5 +1,5 @@
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public interface Ilog {
-    void logString(int arg, int currentResult, String operation) throws FileNotFoundException;
+    void logString(ComplexNumber arg, ComplexNumber currentResult, String operation) throws IOException;
 }
