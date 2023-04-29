@@ -1,4 +1,4 @@
-public class SumCalculate implements ICalculate {
+class SumCalculate implements ICalculate {
     @Override
     public ComplexNumber calculations(ComplexNumber arg, ComplexNumber currentResult) {
         currentResult.i += arg.i;

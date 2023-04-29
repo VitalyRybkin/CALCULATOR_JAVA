@@ -2,7 +2,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Calculations {
+class Calculations {
 
     ComplexNumber currentComplexNumber;
 
@@ -10,11 +10,11 @@ public class Calculations {
 
     private final String logFileType = "txt";
 
-    public Calculations(ComplexNumber currentComplexNumber) {
+    Calculations(ComplexNumber currentComplexNumber) {
         this.currentComplexNumber = currentComplexNumber;
     }
 
-    public void calculationsRun() throws IOException {
+    void calculationsRun() throws IOException {
         ComplexNumber complexNumber = numInput();
         this.currentComplexNumber.r = complexNumber.r;
         this.currentComplexNumber.i = complexNumber.i;
@@ -22,35 +22,35 @@ public class Calculations {
         logResult("Результат", this.currentComplexNumber, logFileType);
         while (true){
             String operation = operationInput();
-            if (operation.equals("+")){
-                complexNumber = numInput();
-                usersInput(complexNumber);
-                ICalculate calculate = setCalculation(operation);
-                Ilog ilog = setLogFile(calculate, logFileType);
-                ilog.logString(complexNumber, this.currentComplexNumber, operation);
-                this.currentComplexNumber = calculate.calculations(complexNumber, this.currentComplexNumber);
-                continue;
-            }
-            if (operation.equals("*")){
-                complexNumber = numInput();
-                usersInput(complexNumber);
-                ICalculate calculate = setCalculation(operation);
-                Ilog ilog = setLogFile(calculate, logFileType);
-                ilog.logString(complexNumber, this.currentComplexNumber, operation);
-                this.currentComplexNumber = calculate.calculations(complexNumber, this.currentComplexNumber);
-                continue;
-            }
             if (operation.equals("=")){
                 logResult("Результат", this.currentComplexNumber, logFileType);
                 break;
             }
+//            if (operation.equals("+")){
+//                complexNumber = numInput();
+//                usersInput(complexNumber);
+//                ICalculate calculate = setCalculation(operation);
+//                Ilog ilog = setLogFile(calculate, logFileType);
+//                ilog.logString(complexNumber, this.currentComplexNumber, operation);
+//                this.currentComplexNumber = calculate.calculations(complexNumber, this.currentComplexNumber);
+//                continue;
+//            }
+//            if (operation.equals("*")){
+                complexNumber = numInput();
+                usersInput(complexNumber);
+                ICalculate calculate = setCalculation(operation);
+                Ilog ilog = setLogFile(calculate, logFileType);
+                ilog.logString(complexNumber, this.currentComplexNumber, operation);
+                this.currentComplexNumber = calculate.calculations(complexNumber, this.currentComplexNumber);
+             //   continue;
+            //            }
         }
 
         String operand = getOperand(this.currentComplexNumber);
         System.out.printf("Результат расчета: %.2f%s%.2fi", this.currentComplexNumber.r, operand, this.currentComplexNumber.i);
     }
 
-    public ICalculate setCalculation(String operation) {
+    ICalculate setCalculation(String operation) {
         ICalculate calculate;
         ICalculateFactory calculateFactory;
         if (operation.equals("+")) {
@@ -63,7 +63,7 @@ public class Calculations {
         return calculate;
     }
 
-    public Ilog setLogFile (ICalculate calculate, String logFileType) {
+    Ilog setLogFile (ICalculate calculate, String logFileType) {
         Ilog ilog;
         if (logFileType.equals("txt")) {
             ilog = new LogTxt(calculate);
@@ -74,13 +74,13 @@ public class Calculations {
         return ilog;
     }
 
-    public String operationInput(){
+    String operationInput(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите операцию (+, *, =): ");
         return scanner.next();
     }
 
-    public ComplexNumber numInput(){
+    ComplexNumber numInput(){
         Scanner scanner = new Scanner(System.in);
         double r;
         double i;
@@ -93,12 +93,12 @@ public class Calculations {
         return new ComplexNumber(r, i);
     }
 
-    public void usersInput (ComplexNumber complexNumber){
+    void usersInput (ComplexNumber complexNumber){
         String operand = getOperand(complexNumber);
         System.out.println("Вы ввели: " + complexNumber.r + operand + complexNumber.i + "i");
     }
 
-    public void logResult(String resultString, ComplexNumber currentResult, String logFileType){
+    void logResult(String resultString, ComplexNumber currentResult, String logFileType){
         String operand = getOperand(currentResult);
         if (logFileType.equals("txt")) {
             try (FileWriter writer = new FileWriter("log.txt", true)) {
@@ -127,7 +127,7 @@ public class Calculations {
         }
     }
 
-    public String getOperand(ComplexNumber complexNumber) {
+    String getOperand(ComplexNumber complexNumber) {
         String operand;
         if (complexNumber.i >= 0.0) {
             operand = "+";

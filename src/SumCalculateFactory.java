@@ -1,4 +1,4 @@
-public class SumCalculateFactory implements ICalculateFactory{
+class SumCalculateFactory implements ICalculateFactory{
 
     @Override
     public ICalculate createCalculation() {

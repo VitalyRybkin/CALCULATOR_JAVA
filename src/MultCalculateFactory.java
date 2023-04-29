@@ -1,4 +1,4 @@
-public class MultCalculateFactory implements ICalculateFactory{
+class MultCalculateFactory implements ICalculateFactory{
     @Override
     public ICalculate createCalculation() {
         return new MultCalculate();

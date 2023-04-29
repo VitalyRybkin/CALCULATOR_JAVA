@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class Validate {
+class Validate {
 
-    public double ValidateInput (String input){
+    double ValidateInput (String input){
         Scanner scanner = new Scanner(System.in);
         while (true){
             try {

@@ -1,7 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class LogCsv implements Ilog{
+class LogCsv implements Ilog{
 
     ICalculate calculate;
 

@@ -1,4 +1,4 @@
-public class MultCalculate implements ICalculate {
+class MultCalculate implements ICalculate {
     @Override
     public ComplexNumber calculations(ComplexNumber arg, ComplexNumber currentResult) {
         currentResult.i *= arg.i;

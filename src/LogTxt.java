@@ -1,11 +1,11 @@
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class LogTxt implements Ilog {
+class LogTxt implements Ilog {
 
     ICalculate calculate;
 
-    public LogTxt(ICalculate calculate) {
+    LogTxt(ICalculate calculate) {
         this.calculate = calculate;
     }
 
