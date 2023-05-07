@@ -26,24 +26,12 @@ class Calculations {
                 logResult("Результат", this.currentComplexNumber, logFileType);
                 break;
             }
-//            if (operation.equals("+")){
-//                complexNumber = numInput();
-//                usersInput(complexNumber);
-//                ICalculate calculate = setCalculation(operation);
-//                Ilog ilog = setLogFile(calculate, logFileType);
-//                ilog.logString(complexNumber, this.currentComplexNumber, operation);
-//                this.currentComplexNumber = calculate.calculations(complexNumber, this.currentComplexNumber);
-//                continue;
-//            }
-//            if (operation.equals("*")){
                 complexNumber = numInput();
                 usersInput(complexNumber);
                 ICalculate calculate = setCalculation(operation);
                 Ilog ilog = setLogFile(calculate, logFileType);
                 ilog.logString(complexNumber, this.currentComplexNumber, operation);
                 this.currentComplexNumber = calculate.calculations(complexNumber, this.currentComplexNumber);
-             //   continue;
-            //            }
         }
 
         String operand = getOperand(this.currentComplexNumber);
